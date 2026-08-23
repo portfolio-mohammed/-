@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> مشروع السكن المناخي المعياري الحديث</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap');
+
+        :root {
+            --primary: #1e3a8a;
+            --primary-light: #3b82f6;
+            --secondary: #ea580c; /* Orange accent */
+            --accent: #f97316;    /* Bright orange */
+            --bg-dark: #0f172a;
+            --bg-card: #1e293b;
+            --bg-light: #f8fafc;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border: #334155;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding-bottom: 60px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
+            border-bottom: 4px solid var(--secondary);
+            padding: 50px 0 40px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 12px;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+            margin: -25px auto 40px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .meta-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 18px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+        }
+
+        .meta-card .label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .meta-card .value {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+
+        section {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            font-size: 1.4rem;
+            color: #ffffff;
+            border-right: 4px solid var(--secondary);
+            padding-right: 12px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        p {
+            color: #cbd5e1;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .image-card {
+            background: #0f172a;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .image-card img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            display: block;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .image-card .caption {
+            padding: 12px 15px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            text-align: center;
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+            margin-top: 15px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: right;
+            font-size: 0.95rem;
+        }
+
+        th {
+            background-color: #0f172a;
+            color: var(--secondary);
+            padding: 12px 15px;
+            border-bottom: 2px solid var(--border);
+            font-weight: 700;
+        }
+
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid var(--border);
+            color: #e2e8f0;
+        }
+
+        tr:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.02);
+        }
+
+        tr.total-row {
+            background-color: rgba(234, 88, 12, 0.15);
+            font-weight: 700;
+        }
+
+        tr.total-row td {
+            color: #ffffff;
+            border-top: 2px solid var(--secondary);
+            font-size: 1.05rem;
+        }
+
+        .diagram-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .diagram-card {
+            background: #0f172a;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .diagram-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--primary-light);
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .diagram-card svg {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .diagram-caption {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-align: center;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        .two-cols {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        ul {
+            list-style: none;
+            padding-right: 0;
+        }
+
+        ul li {
+            position: relative;
+            padding-right: 20px;
+            margin-bottom: 10px;
+            color: #cbd5e1;
+        }
+
+        ul li::before {
+            content: "•";
+            color: var(--secondary);
+            font-weight: bold;
+            font-size: 1.2rem;
+            position: absolute;
+            right: 0;
+            top: -2px;
+        }
+
+        footer {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1>محفظة مشروع السكن المناخي المعياري الحديث</h1>
+            <p>التصميم المعماري الهيكلي، المخططات الفنية ثنائية الأبعاد، وخطة التنفيذ المالي المحلي</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="meta-grid">
+            <div class="meta-card">
+                <span class="label">الموقع المستهدف</span>
+                <span class="value">محافظة الأنبار / العراق</span>
+            </div>
+            <div class="meta-card">
+                <span class="label">مساحة البناء</span>
+                <span class="value">84 م² (7m × 12m)</span>
+            </div>
+            <div class="meta-card">
+                <span class="label">الميزانية المستهدفة</span>
+                <span class="value">$15,700 USD</span>
+            </div>
+            <div class="meta-card">
+                <span class="label">نظام الواجهات</span>
+                <span class="value">ألواح PU / جص EIFS أملس</span>
+            </div>
+        </div>
+
+        <section>
+            <h2>1. الملخص التنفيذي والمفهوم المعماري</h2>
+            <p>
+                تحدد هذه المخططات الهندسية والمواصفات الفنية لبناء مسكن معياري حديث بمساحة 84 م² مخصص للمناخات الصحراوية ذات الحرارة العالية. يلغي التصميم المظهر الصناعي للهياكل والمكعبات الحديدية من خلال تغليف الهيكل بـ <strong>ألواح بولي أوريثان (PU) عالي الكثافة مع جص EIFS أملس</strong>، مما يمنح المبنى مظهراً سكنياً راقياً مع خفض كفاءة استهلاك الطاقة بشكل كبير ليتناسب مع الظروف المناخية في العراق.
+            </p>
+        </section>
+
+        <!-- Visual Renderings & Design Concepts Section -->
+        <section>
+            <h2>2. العروض البصرية والمفاهيم المعمارية</h2>
+            <p>مجموعة من التصاميم البصرية والمخططات التفصيلية المنفذة للمشروع المناخي المعياري:</p>
+            <div class="image-gallery">
+                <div class="image-card">
+                    <img src="https://github.com/portfolio-mohammed/-/blob/main/Gemini_Generated_Image_abjw18abjw18abjw%20(1).jpeg?raw=true">
+">
+                    <div class="caption">حلول البنية التحتية القابلة للتوسع المخصصة للتخطيط العمراني الموفر</div>
+                </div>
+                <div class="image-card">
+                    <img src="https://github.com/portfolio-mohammed/-/blob/main/Gemini_Generated_Image_ypb7p1ypb7p1ypb7%20(1).jpeg?raw=true">
+                    <div class="caption">التصميم الخارجي للمسكن المعياري مع مظلات التظليل والتكسية الخشبية</div>
+                </div>
+                <div class="image-card">
+                    <img src="https://github.com/portfolio-mohammed/-/blob/main/Gemini_Generated_Image_gcwagqgcwagqgcwa.jpeg?raw=true">
+                    <div class="caption">منظور كامل للفيلا المعيارية المكونة من طابقين مع الجلسات الخارجية</div>
+                </div>
+                <div class="image-card">
+                    <img src="https://github.com/portfolio-mohammed/-/blob/main/Gemini_Generated_Image_b8e32lb8e32lb8e3.jpeg?raw=true">
+                    <div class="caption">تصميم مجمع معياري عالي الكفاءة للمناخ الصحراوي</div>
+                </div>
+            </div>
+        </section>
+
+             <section>
+            <h2>1. الملخص التنفيذي ونموذج التسعير التجاري</h2>
+            <p>
+                تم تعديل هذه المحفظة لتناسب إطلاق شركة تصنيع وتجميع مساكن معيارية في العراق بهدف منافسة البناء الإنشائي التقليدي (الطابوق والخرسانة). من خلال استخدام هيكل فولاذي مدروس وألواح عازلة بديلة للمكعبات الحديدية المكلفة، تضمن هذه الميزانية تحقيق تكلفة إنتاج أقل بنحو 25% إلى 30% مقارنة بالبناء التقليدي، مع توفير هامش ربح تجاري ممتاز لكل وحدة مساحتها 84 م².
+            </p>
+        </section>
+
+        <section>
+            <h2>2. جدول تكاليف الإنتاج وهامش الربح التجاري (للوحدة 84 م²)</h2>
+            <p>التكلفة التشغيلية والإنتاجية الفعلية لبناء وحدة متكاملة وجاهزة للتسليم:</p>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>البند / مرحلة العمل</th>
+                            <th>تفاصيل المواصفات والمواد</th>
+                            <th>تكلفة المواد الخام</th>
+                            <th>أجور التصنيع والتركيب</th>
+                            <th>التكلفة الإجمالية (USD)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>الهيكل الفولاذي والأساسات</strong></td>
+                            <td>مقاطع حديد هيكلية خفيفة (C-Channel / H-Beam) + قواعد تثبيت مسلحة</td>
+                            <td>$3,200</td>
+                            <td>$1,000</td>
+                            <td><strong>$4,200</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>الجدران والألواح العازلة (Sandwich Panels)</strong></td>
+                            <td>ألواح بولي أوريثان عازلة (PU) سمك 100mm مع واجهة خارجية متينة</td>
+                            <td>$3,800</td>
+                            <td>$1,200</td>
+                            <td><strong>$5,000</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>مظلة السقف والتظليل الحراري</strong></td>
+                            <td>هيكل سقف معزز بطبقة عزل إضافية لكسر درجات الحرارة الصيفية</td>
+                            <td>$1,600</td>
+                            <td>$500</td>
+                            <td><strong>$2,100</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>النوافذ والأبواب</strong></td>
+                            <td>نوافذ UPVC زجاج مزدوج عازل وأبواب رئيسية محكمة</td>
+                            <td>$1,800</td>
+                            <td>$400</td>
+                            <td><strong>$2,200</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>التشطيب الداخلي والأرضيات</strong></td>
+                            <td>قواطع داخلية جبس بورد، طلاء، وأرضيات بلاط SPC مقاوم للحرارة</td>
+                            <td>$1,800</td>
+                            <td>$600</td>
+                            <td><strong>$2,400</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>السباكة، الكهرباء، والنقل الميداني</strong></td>
+                            <td>أنابيب PEX، تأسيسات كهربائية، وأجور الشحن والنقل السريع للموقع</td>
+                            <td>$1,000</td>
+                            <td>$850</td>
+                            <td><strong>$1,850</strong></td>
+                        </tr>
+                        <tr class="total-row">
+                            <td colspan="2"><strong>إجمالي تكلفة الإنتاج الفعلية </strong></td>
+                            <td><strong>$13,200</strong></td>
+                            <td><strong>$4,550</strong></td>
+                            <td><strong>$17,750 USD</strong></td>
+                        </tr>
+                        <tr style="background-color: rgba(249, 115, 22, 0.15); font-weight: 700;">
+                            <td colspan="4"><strong>سعر البيع النهائي للعميل (أقل من تكلفة الطابوق التقليدي + هامش ربحك)</strong></td>
+                            <td><strong style="color: var(--secondary-light); font-size: 1.1rem;">$21,500 USD (ربحك: $3,750)</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+                <div class="two-cols">
+                    <div class="diagram-card">
+                        <div class="diagram-title">المخطط 2: المقطع الهيكلي والقواعد</div>
+                        <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+                            <line x1="10" y1="170" x2="310" y2="170" stroke="#78350f" stroke-width="3"/>
+                            <rect x="40" y="170" width="40" height="20" fill="#64748b"/>
+                            <rect x="140" y="170" width="40" height="20" fill="#64748b"/>
+                            <rect x="240" y="170" width="40" height="20" fill="#64748b"/>
+                            
+                            <rect x="55" y="50" width="10" height="120" fill="#3b82f6"/>
+                            <rect x="155" y="50" width="10" height="120" fill="#3b82f6"/>
+                            <rect x="255" y="50" width="10" height="120" fill="#3b82f6"/>
+                            <rect x="40" y="40" width="240" height="10" fill="#3b82f6"/>
+                            
+                            <text x="160" y="30" font-family="Tajawal" font-size="9" fill="#3b82f6" text-anchor="middle">هيكل فولاذي خفيف H-Beam / C-Channel</text>
+                        </svg>
+                        <div class="diagram-caption">شكل 4.2: توزيع الهيكل المعدني والقواعد الخرسانية.</div>
+                    </div>
+
+                    <div class="diagram-card">
+                        <div class="diagram-title">المخطط 3: طبقات الواجهة العازلة (EIFS)</div>
+
+                        <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="20" y="30" width="15" height="130" fill="#cbd5e1"/>
+                            <rect x="35" y="30" width="30" height="130" fill="#475569"/>
+                            <rect x="65" y="30" width="50" height="130" fill="#d97706"/>
+                            <rect x="115" y="30" width="10" height="130" fill="#94a3b8"/>
+                            <rect x="125" y="30" width="15" height="130" fill="#ea580c"/>
+
+                            <text x="300" y="50" font-family="Tajawal" font-size="9" fill="#cbd5e1">1. جبس بورد داخلي (12.5mm)</text>
+                            <text x="300" y="75" font-family="Tajawal" font-size="9" fill="#cbd5e1">2. هيكل حديد خفيف</text>
+                            <text x="300" y="100" font-family="Tajawal" font-size="9" fill="#d97706" font-weight="bold">3. بولي أوريثان (100mm)</text>
+                            <text x="300" y="125" font-family="Tajawal" font-size="9" fill="#cbd5e1">4. شبك ألياف زجاجية</text>
+                            <text x="300" y="150" font-family="Tajawal" font-size="9" fill="#ea580c" font-weight="bold">5. جص أكريليك أملس (EIFS)</text>
+                        </svg>
+                        <div class="diagram-caption">شكل 4.3: التفصيل الإنشائي لطبقات العزل والواجهة.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>5. دليل الموردين ومصادر المواد في العراق</h2>
+            <div class="two-cols">
+                <div>
+                    <h3 style="color: var(--secondary); font-size: 1.05rem; margin-bottom: 10px;">الهياكل والحديد الإنشائي:</h3>
+                    <ul>
+                        <li><strong>ساحات الخط الدولي السريع (الرمادي والفلّوجة):</strong> توريد مقاطع الحديد والقواعد.</li>
+                        <li><strong>أسواق الشيخ عمر (بغداد):</strong> مقاطع Steel C-Channels و H-Beams بكافة الأبعاد.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 style="color: var(--secondary); font-size: 1.05rem; margin-bottom: 10px;">ألواح العزل والجدران (PU / EIFS):</h3>
+                    <ul>
+                        <li><strong>شركة عبر الفيحاء (بغداد):</strong> توريد ألواح الساندويتش بانل وأنظمة البناء المعياري.</li>
+                        <li><strong>مصنع حيدر أحمد موسى (HAM Factory):</strong> تصنيع ألواح البولي أوريثان ومواد العزل.</li>
+                        <li><strong>معامل خرسانة AAC (كربلاء والسليمانية):</strong> كتل الخرسانة الخفيفة مع التوصيل للأنبار.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>مشروع السكن المناخي المعياري الحديث — العراق / الأنبار | 2026</p>
+        </div>
+    </footer>
+
+</body>
+</html>
